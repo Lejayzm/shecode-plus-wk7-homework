@@ -14,7 +14,10 @@ function updateWeather(response) {
   let windSpeedElement = document.querySelector("#wind-speed");
   //use api results for time
   let timeElement = response.querySelector("#time");
-  let   date = new date(response.data.time * 1000);
+  let date = new date(response.data.time * 1000);
+  //use api for icon
+  let iconElement =  document.querySelector("#icon");
+  iconElement.html = '<img src="${response.data.condition.icon_url}" class = "weather-app-icon" />';
 
   cityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
@@ -34,7 +37,7 @@ function formateDate(data) {
   If (minutes < 10) {
     minutes = '0${minutes}';
   }
-  
+
   return '${day} ${hours}:${minutes}';
 }
 
